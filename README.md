@@ -1,4 +1,4 @@
-# NYC Taxi Data Engineering Project
+# Data Engineering Learning Docker + Terraform
 
 ## Overview
 This project is part of the Zoomcamp Data Engineering course and focuses on setting up a data pipeline using Docker, PostgreSQL, and SQL. Future sections will include Terraform for infrastructure automation and setting up a Google Cloud Platform (GCP) environment.

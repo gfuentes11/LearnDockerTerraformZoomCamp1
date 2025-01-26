@@ -47,13 +47,23 @@ docker run -it \
 ```
 
 ### Running with Docker Compose
-To bring up both PostgreSQL and PGAdmin using Docker Compose:
+The `docker-compose.yml` file simplifies container orchestration by defining and running multiple services at once. In this project, it is used to spin up a PostgreSQL database along with a PGAdmin instance, allowing for database management via a web UI. Instead of manually setting up each container separately, `docker-compose` automates the process with a single command:
 ```sh
 docker-compose up
 ```
+This will start the database service (`pgdatabase`) and the PGAdmin service (`pgadmin`) as defined in the `docker-compose.yml` file.
 
-### Data Ingestion
-Data can be ingested using the `ingest_data.py` script. Example command:
+## Data Ingestion
+### Purpose of `ingest_data.py`
+The `ingest_data.py` script is responsible for downloading and inserting NYC taxi trip data into the PostgreSQL database. The script performs the following tasks:
+1. **Fetches data** from the specified URL (a compressed CSV file).
+2. **Extracts the data** and prepares it for insertion.
+3. **Connects to PostgreSQL** using credentials and connection details passed as command-line arguments.
+4. **Creates the table** if it does not already exist.
+5. **Inserts the data** into the `yellow_taxi_trips` table efficiently using batch operations.
+6. **Commits changes** and closes the database connection.
+
+Example command to run the ingestion job:
 ```sh
 python ingest_data.py \
   --user=root \
@@ -63,6 +73,37 @@ python ingest_data.py \
   --db=ny_taxi \
   --table_name=yellow_taxi_trips \
   --url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+```
+
+## SQL Queries
+Several SQL queries are performed as part of this project, including:
+- **Creating tables:**
+```sql
+CREATE TABLE IF NOT EXISTS yellow_taxi_trips (
+    vendor_id INTEGER,
+    pickup_datetime TIMESTAMP,
+    dropoff_datetime TIMESTAMP,
+    passenger_count INTEGER,
+    trip_distance FLOAT,
+    rate_code_id INTEGER,
+    payment_type INTEGER,
+    fare_amount FLOAT,
+    total_amount FLOAT
+);
+```
+- **Checking data integrity:**
+```sql
+SELECT COUNT(*) FROM yellow_taxi_trips;
+```
+- **Fetching sample data:**
+```sql
+SELECT * FROM yellow_taxi_trips LIMIT 10;
+```
+- **Aggregating trip statistics:**
+```sql
+SELECT vendor_id, COUNT(*) AS trip_count
+FROM yellow_taxi_trips
+GROUP BY vendor_id;
 ```
 
 ## Next Steps

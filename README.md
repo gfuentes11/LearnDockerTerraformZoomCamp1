@@ -1,7 +1,7 @@
 # Data Engineering Learning Docker + Terraform
 
 ## Overview
-This project is part of the Zoomcamp Data Engineering course and focuses on setting up a data pipeline using Docker, PostgreSQL, SQL, and Terraform. Future sections will include deploying infrastructure on Google Cloud Platform (GCP) and expanding the ETL pipeline.
+This project is part of the Zoomcamp Data Engineering course and focuses on setting up a data pipeline using Docker, PostgreSQL, SQL, and Terraform. This is an introduction to docker and to start getting a taste of different technologies used in DE. 
 
 ## Project Structure
 ```
@@ -9,6 +9,8 @@ LEARNDOCKERTERRAFORMZOOMCAMP1/
 │── data/
 │── gcpKeys/
 │   └── zoomCamp_env.json
+│── gcpVMSetUp/
+│   └── gcpVMSetup.md
 │── ny_taxi_postgres_data/
 │── SQL Queries/
 │   └── practice.sql
@@ -18,6 +20,7 @@ LEARNDOCKERTERRAFORMZOOMCAMP1/
 │   └── main.tf
 │   └── terraform.tfstate
 │   └── terraform.tfstate.backup
+│   └── variables.tf
 │── .gitignore
 │── DataDiscovery_Insert.ipynb
 │── docker-compose.yml
@@ -132,9 +135,10 @@ SELECT * FROM yellow_taxi_trips LIMIT 10;
 SELECT vendor_id, COUNT(*) AS trip_count FROM yellow_taxi_trips GROUP BY vendor_id;
 ```
 
-## Next Steps
-- **Expand Terraform setup**: Automate infrastructure provisioning on GCP.
-- **BigQuery Integration**: Load data into Google BigQuery for analysis.
+### Google Cloud Platform Virtual Machine Setup
+The `gcpVMSetup.md` file details the step-by-step process for setting up a GCP Virtual Machine. This is to enable you to run the same project but in GCP.
 
-More updates will be added as the project progresses!
+
+
+
 

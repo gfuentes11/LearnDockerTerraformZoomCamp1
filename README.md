@@ -7,6 +7,9 @@ This project is part of the Zoomcamp Data Engineering course and focuses on sett
 ```
 LEARNDOCKERTERRAFORMZOOMCAMP1/
 │── data/
+│── dataingest/
+│   └── DataDiscovery_Insert.ipynb
+│   └── ingest_data.py
 │── gcpKeys/
 │   └── zoomCamp_env.json
 │── gcpVMSetUp/
@@ -21,11 +24,23 @@ LEARNDOCKERTERRAFORMZOOMCAMP1/
 │   └── terraform.tfstate
 │   └── terraform.tfstate.backup
 │   └── variables.tf
+│── zoomCampHW1/
+│   └── data/
+│   └── hwTerra/
+│       └── main.tf
+│       └── variables.tf
+│   └── prepPostgress/
+│       └── ingest_dataHW.py
+│       └── prepPostgres.ipynb
+│   └── queries/
+│       └── Question3.sql
+│       └── Question4.sql
+│       └── Question5.sql
+│       └── Question6.sql
+│   └── docker-compose_q2.yml
 │── .gitignore
-│── DataDiscovery_Insert.ipynb
 │── docker-compose.yml
 │── Dockerfile
-│── ingest_data.py
 │── README.md
 │── zoomCamp_env.yml
 ```
@@ -138,6 +153,8 @@ SELECT vendor_id, COUNT(*) AS trip_count FROM yellow_taxi_trips GROUP BY vendor_
 ### Google Cloud Platform Virtual Machine Setup
 The `gcpVMSetup.md` file details the step-by-step process for setting up a GCP Virtual Machine. This is to enable you to run the same project but in GCP.
 
+## Homework
+The `zoomCampHW1` directory contains homework assignments that reinforce concepts covered in the course. These assignments involve working with Terraform, PostgreSQL, and Docker to test and solidify understanding of cloud infrastructure, data ingestion, and database querying. Each problem applies real-world data engineering techniques learned throughout the sessions.
 
 
 
